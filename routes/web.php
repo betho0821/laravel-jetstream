@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,5 +27,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/profile', [UsuarioController::class,'profile']);
+    Route::get('/profile', [UsuarioController::class, 'profile']);
 });
+Route::get('/auth/redirect', [AuthController::class, 'redirect']);
+Route::get('/auth/callback-url', [AuthController::class, 'callback']);
